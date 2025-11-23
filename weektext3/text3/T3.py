@@ -1,0 +1,16 @@
+import numpy as np
+
+a = np.array(range(1,26))
+a = np.reshape(a, (5,5))
+print(a)
+print("__________")
+print(a[1])
+print(a[:,2])
+print(a[3:,3:])
+print("__________")
+print(np.sum(a))
+print(np.sum(a,axis=0))
+print(np.sum(a,axis =1))
+print(np.mean(a),np.std(a))
+print("__________")
+print(a.T)
