@@ -1,0 +1,20 @@
+import cv2
+import matplotlib.pyplot as plt
+
+img = cv2.imread('image.jpg')
+img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+img_1 = cv2.resize(img,(img.shape[1]//2,img.shape[0]//2))
+angle = cv2.getRotationMatrix2D((img.shape[1] // 2, img.shape[0] // 2), 45, 0.7)
+img_2 = cv2.warpAffine(img, angle, (img.shape[1], img.shape[0]))
+img_3 = cv2.flip(img,0)
+plt.subplot(221)
+plt.imshow(img, cmap="gray")
+plt.subplot(222)
+plt.imshow(img_1, cmap="gray")
+plt.subplot(223)
+plt.imshow(img_2, cmap="gray")
+plt.subplot(224)
+plt.imshow(img_3, cmap="gray")
+img_2 = cv2.cvtColor(img_2, cv2.COLOR_RGB2BGR)
+cv2.imwrite("rotated_image.jpg", img_2)
+plt.show()
